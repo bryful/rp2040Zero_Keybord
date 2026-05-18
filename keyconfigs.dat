@@ -1,0 +1,445 @@
+﻿{
+  "KeyMaps": [
+    [
+      [
+        {
+          "Modifier": 0,
+          "Keycode": 41,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 6,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 27,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 25,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 255,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 0,
+          "Keycode": 21,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 7,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 4,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 3,
+          "Keycode": 12,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 4,
+          "Keycode": 76,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 3,
+          "Keycode": 29,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 16,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 25,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 11,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 0,
+          "Mouse": 2
+        }
+      ],
+      [
+        {
+          "Modifier": 1,
+          "Keycode": 29,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 2,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 4,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 44,
+          "Mouse": 0
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "Modifier": 0,
+          "Keycode": 41,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 6,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 27,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 25,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 255,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 0,
+          "Keycode": 85,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 39,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 3,
+          "Keycode": 7,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 7,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 39,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 3,
+          "Keycode": 29,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 5,
+          "Keycode": 39,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 25,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 11,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 0,
+          "Mouse": 2
+        }
+      ],
+      [
+        {
+          "Modifier": 1,
+          "Keycode": 29,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 2,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 4,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 44,
+          "Mouse": 0
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "Modifier": 0,
+          "Keycode": 41,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 6,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 27,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 25,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 255,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 0,
+          "Keycode": 12,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 19,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 2,
+          "Keycode": 6,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 2,
+          "Keycode": 87,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 45,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 3,
+          "Keycode": 29,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 4,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 25,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 11,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 0,
+          "Mouse": 2
+        }
+      ],
+      [
+        {
+          "Modifier": 1,
+          "Keycode": 29,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 2,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 4,
+          "Keycode": 0,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 44,
+          "Mouse": 0
+        }
+      ]
+    ]
+  ],
+  "EncoderMaps": [
+    [
+      [
+        {
+          "Modifier": 1,
+          "Keycode": 87,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 86,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 39,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 0,
+          "Keycode": 48,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 50,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 5,
+          "Mouse": 0
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "Modifier": 1,
+          "Keycode": 45,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 46,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 0,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 0,
+          "Keycode": 54,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 55,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 0,
+          "Mouse": 0
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "Modifier": 1,
+          "Keycode": 87,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 86,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 1,
+          "Keycode": 39,
+          "Mouse": 0
+        }
+      ],
+      [
+        {
+          "Modifier": 2,
+          "Keycode": 11,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 0,
+          "Keycode": 25,
+          "Mouse": 0
+        },
+        {
+          "Modifier": 3,
+          "Keycode": 30,
+          "Mouse": 0
+        }
+      ]
+    ]
+  ],
+  "Version": 1
+}
