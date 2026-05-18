@@ -30,21 +30,23 @@
 		{
 			menuStrip1 = new MenuStrip();
 			fileToolStripMenuItem = new ToolStripMenuItem();
-			openToolStripMenuItem = new ToolStripMenuItem();
-			saveToolStripMenuItem = new ToolStripMenuItem();
-			toClipboardToolStripMenuItem = new ToolStripMenuItem();
-			quitToolStripMenuItem = new ToolStripMenuItem();
+			openMenu = new ToolStripMenuItem();
+			saveMenu = new ToolStripMenuItem();
+			toolStripMenuItem1 = new ToolStripSeparator();
+			ToClipBoardJsonMenu = new ToolStripMenuItem();
+			ToClipboardCPPMenu = new ToolStripMenuItem();
+			toolStripMenuItem2 = new ToolStripSeparator();
+			quitMenu = new ToolStripMenuItem();
 			editToolStripMenuItem = new ToolStripMenuItem();
-			copyFromindex0ToolStripMenuItem = new ToolStripMenuItem();
-			copyFromindex1ToolStripMenuItem = new ToolStripMenuItem();
-			copyFromindex2ToolStripMenuItem = new ToolStripMenuItem();
-			copyFromindex3ToolStripMenuItem = new ToolStripMenuItem();
+			copyFromindex0Menu = new ToolStripMenuItem();
+			copyFromindex1Menu = new ToolStripMenuItem();
+			copyFromindex2Menu = new ToolStripMenuItem();
 			layersw1 = new LayerSW();
 			groupBoxKeys = new GroupBox();
-			keyIcons1 = new KeyIcons();
 			keyConfigsw1 = new KeyConfigSW();
 			btnSet = new Button();
 			btnClear = new Button();
+			keyIcons1 = new KeyIcons();
 			groupBox1 = new GroupBox();
 			rotaryEncoder1 = new RotaryEncoderSW();
 			groupBox2 = new GroupBox();
@@ -66,73 +68,84 @@
 			// 
 			// fileToolStripMenuItem
 			// 
-			fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, saveToolStripMenuItem, toClipboardToolStripMenuItem, quitToolStripMenuItem });
+			fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openMenu, saveMenu, toolStripMenuItem1, ToClipBoardJsonMenu, ToClipboardCPPMenu, toolStripMenuItem2, quitMenu });
 			fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			fileToolStripMenuItem.Size = new Size(37, 20);
 			fileToolStripMenuItem.Text = "File";
 			// 
-			// openToolStripMenuItem
+			// openMenu
 			// 
-			openToolStripMenuItem.Name = "openToolStripMenuItem";
-			openToolStripMenuItem.Size = new Size(137, 22);
-			openToolStripMenuItem.Text = "Open";
+			openMenu.Name = "openMenu";
+			openMenu.Size = new Size(160, 22);
+			openMenu.Text = "Open";
 			// 
-			// saveToolStripMenuItem
+			// saveMenu
 			// 
-			saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			saveToolStripMenuItem.Size = new Size(137, 22);
-			saveToolStripMenuItem.Text = "Save";
+			saveMenu.Name = "saveMenu";
+			saveMenu.Size = new Size(160, 22);
+			saveMenu.Text = "Save";
 			// 
-			// toClipboardToolStripMenuItem
+			// toolStripMenuItem1
 			// 
-			toClipboardToolStripMenuItem.Name = "toClipboardToolStripMenuItem";
-			toClipboardToolStripMenuItem.Size = new Size(137, 22);
-			toClipboardToolStripMenuItem.Text = "ToClipboard";
-			toClipboardToolStripMenuItem.Click += toClipboardToolStripMenuItem_Click;
+			toolStripMenuItem1.Name = "toolStripMenuItem1";
+			toolStripMenuItem1.Size = new Size(157, 6);
 			// 
-			// quitToolStripMenuItem
+			// ToClipBoardJsonMenu
 			// 
-			quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-			quitToolStripMenuItem.Size = new Size(137, 22);
-			quitToolStripMenuItem.Text = "Quit";
+			ToClipBoardJsonMenu.Name = "ToClipBoardJsonMenu";
+			ToClipBoardJsonMenu.Size = new Size(160, 22);
+			ToClipBoardJsonMenu.Text = "ToClipBoardJson";
+			// 
+			// ToClipboardCPPMenu
+			// 
+			ToClipboardCPPMenu.Name = "ToClipboardCPPMenu";
+			ToClipboardCPPMenu.Size = new Size(160, 22);
+			ToClipboardCPPMenu.Text = "ToClipboardCPP";
+			// 
+			// toolStripMenuItem2
+			// 
+			toolStripMenuItem2.Name = "toolStripMenuItem2";
+			toolStripMenuItem2.Size = new Size(157, 6);
+			// 
+			// quitMenu
+			// 
+			quitMenu.Name = "quitMenu";
+			quitMenu.Size = new Size(160, 22);
+			quitMenu.Text = "Quit";
 			// 
 			// editToolStripMenuItem
 			// 
-			editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { copyFromindex0ToolStripMenuItem, copyFromindex1ToolStripMenuItem, copyFromindex2ToolStripMenuItem, copyFromindex3ToolStripMenuItem });
+			editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { copyFromindex0Menu, copyFromindex1Menu, copyFromindex2Menu });
 			editToolStripMenuItem.Name = "editToolStripMenuItem";
 			editToolStripMenuItem.Size = new Size(39, 20);
 			editToolStripMenuItem.Text = "Edit";
 			// 
-			// copyFromindex0ToolStripMenuItem
+			// copyFromindex0Menu
 			// 
-			copyFromindex0ToolStripMenuItem.Name = "copyFromindex0ToolStripMenuItem";
-			copyFromindex0ToolStripMenuItem.Size = new Size(162, 22);
-			copyFromindex0ToolStripMenuItem.Text = "CopyFromindex0";
+			copyFromindex0Menu.Name = "copyFromindex0Menu";
+			copyFromindex0Menu.Size = new Size(162, 22);
+			copyFromindex0Menu.Text = "CopyFromindex0";
 			// 
-			// copyFromindex1ToolStripMenuItem
+			// copyFromindex1Menu
 			// 
-			copyFromindex1ToolStripMenuItem.Name = "copyFromindex1ToolStripMenuItem";
-			copyFromindex1ToolStripMenuItem.Size = new Size(162, 22);
-			copyFromindex1ToolStripMenuItem.Text = "CopyFromindex1";
+			copyFromindex1Menu.Name = "copyFromindex1Menu";
+			copyFromindex1Menu.Size = new Size(162, 22);
+			copyFromindex1Menu.Text = "CopyFromindex1";
 			// 
-			// copyFromindex2ToolStripMenuItem
+			// copyFromindex2Menu
 			// 
-			copyFromindex2ToolStripMenuItem.Name = "copyFromindex2ToolStripMenuItem";
-			copyFromindex2ToolStripMenuItem.Size = new Size(162, 22);
-			copyFromindex2ToolStripMenuItem.Text = "CopyFromindex2";
-			// 
-			// copyFromindex3ToolStripMenuItem
-			// 
-			copyFromindex3ToolStripMenuItem.Name = "copyFromindex3ToolStripMenuItem";
-			copyFromindex3ToolStripMenuItem.Size = new Size(162, 22);
-			copyFromindex3ToolStripMenuItem.Text = "CopyFromindex3";
+			copyFromindex2Menu.Name = "copyFromindex2Menu";
+			copyFromindex2Menu.Size = new Size(162, 22);
+			copyFromindex2Menu.Text = "CopyFromindex2";
 			// 
 			// layersw1
 			// 
+			layersw1.BackColor = SystemColors.Control;
+			layersw1.ForeColor = SystemColors.ControlText;
 			layersw1.Location = new Point(12, 29);
 			layersw1.Name = "layersw1";
-			layersw1.Size = new Size(300, 40);
-			layersw1.TabIndex = 3;
+			layersw1.Size = new Size(393, 40);
+			layersw1.TabIndex = 5;
 			layersw1.TabStop = false;
 			layersw1.Text = "Layer";
 			// 
@@ -149,23 +162,16 @@
 			groupBoxKeys.TabStop = false;
 			groupBoxKeys.Text = "Keyboard";
 			// 
-			// keyIcons1
-			// 
-			keyIcons1.Location = new Point(0, 0);
-			keyIcons1.Name = "keyIcons1";
-			keyIcons1.Size = new Size(360, 286);
-			keyIcons1.TabIndex = 0;
-			// 
 			// keyConfigsw1
 			// 
-			keyConfigsw1.Location = new Point(6, 329);
+			keyConfigsw1.Location = new Point(17, 329);
 			keyConfigsw1.Name = "keyConfigsw1";
 			keyConfigsw1.Size = new Size(217, 75);
 			keyConfigsw1.TabIndex = 1;
 			// 
 			// btnSet
 			// 
-			btnSet.Location = new Point(229, 376);
+			btnSet.Location = new Point(240, 366);
 			btnSet.Name = "btnSet";
 			btnSet.Size = new Size(137, 51);
 			btnSet.TabIndex = 2;
@@ -174,20 +180,26 @@
 			// 
 			// btnClear
 			// 
-			btnClear.Location = new Point(229, 329);
+			btnClear.Location = new Point(240, 329);
 			btnClear.Name = "btnClear";
 			btnClear.Size = new Size(137, 31);
 			btnClear.TabIndex = 3;
 			btnClear.Text = "Clear";
 			btnClear.UseVisualStyleBackColor = true;
-			btnClear.Click += btnClear_Click;
+			// 
+			// keyIcons1
+			// 
+			keyIcons1.Location = new Point(17, 22);
+			keyIcons1.Name = "keyIcons1";
+			keyIcons1.Size = new Size(360, 286);
+			keyIcons1.TabIndex = 0;
 			// 
 			// groupBox1
 			// 
 			groupBox1.Controls.Add(rotaryEncoder1);
-			groupBox1.Location = new Point(411, 296);
+			groupBox1.Location = new Point(417, 264);
 			groupBox1.Name = "groupBox1";
-			groupBox1.Size = new Size(450, 215);
+			groupBox1.Size = new Size(450, 238);
 			groupBox1.TabIndex = 4;
 			groupBox1.TabStop = false;
 			groupBox1.Text = "RotaryEncoder1";
@@ -195,7 +207,7 @@
 			// rotaryEncoder1
 			// 
 			rotaryEncoder1.BackColor = SystemColors.Control;
-			rotaryEncoder1.Location = new Point(0, 0);
+			rotaryEncoder1.Location = new Point(14, 19);
 			rotaryEncoder1.Name = "rotaryEncoder1";
 			rotaryEncoder1.Size = new Size(430, 190);
 			rotaryEncoder1.TabIndex = 0;
@@ -203,9 +215,9 @@
 			// groupBox2
 			// 
 			groupBox2.Controls.Add(rotaryEncoder2);
-			groupBox2.Location = new Point(411, 75);
+			groupBox2.Location = new Point(417, 29);
 			groupBox2.Name = "groupBox2";
-			groupBox2.Size = new Size(450, 215);
+			groupBox2.Size = new Size(444, 229);
 			groupBox2.TabIndex = 3;
 			groupBox2.TabStop = false;
 			groupBox2.Text = "RotaryEncoder2";
@@ -213,16 +225,16 @@
 			// rotaryEncoder2
 			// 
 			rotaryEncoder2.BackColor = SystemColors.Control;
-			rotaryEncoder2.Location = new Point(0, 0);
+			rotaryEncoder2.Location = new Point(14, 17);
 			rotaryEncoder2.Name = "rotaryEncoder2";
-			rotaryEncoder2.Size = new Size(430, 190);
+			rotaryEncoder2.Size = new Size(430, 192);
 			rotaryEncoder2.TabIndex = 0;
 			// 
 			// Form1
 			// 
 			ClientSize = new Size(879, 520);
-			Controls.Add(menuStrip1);
 			Controls.Add(layersw1);
+			Controls.Add(menuStrip1);
 			Controls.Add(groupBoxKeys);
 			Controls.Add(groupBox1);
 			Controls.Add(groupBox2);
@@ -243,7 +255,7 @@
 
 		private MenuStrip menuStrip1;
 		private ToolStripMenuItem fileToolStripMenuItem;
-		private ToolStripMenuItem quitToolStripMenuItem;
+		private ToolStripMenuItem quitMenu;
 		private LayerSW layersw1;
 
 		private GroupBox groupBoxKeys;
@@ -256,13 +268,15 @@
 		private RotaryEncoderSW rotaryEncoder2;
 		private GroupBox groupBox1;
 		private RotaryEncoderSW rotaryEncoder1;
-		private ToolStripMenuItem toClipboardToolStripMenuItem;
+		private ToolStripMenuItem ToClipboardCPPMenu;
 		private ToolStripMenuItem editToolStripMenuItem;
-		private ToolStripMenuItem copyFromindex0ToolStripMenuItem;
-		private ToolStripMenuItem copyFromindex1ToolStripMenuItem;
-		private ToolStripMenuItem copyFromindex2ToolStripMenuItem;
-		private ToolStripMenuItem copyFromindex3ToolStripMenuItem;
-		private ToolStripMenuItem openToolStripMenuItem;
-		private ToolStripMenuItem saveToolStripMenuItem;
+		private ToolStripMenuItem copyFromindex0Menu;
+		private ToolStripMenuItem copyFromindex1Menu;
+		private ToolStripMenuItem copyFromindex2Menu;
+		private ToolStripMenuItem openMenu;
+		private ToolStripMenuItem saveMenu;
+		private ToolStripMenuItem ToClipBoardJsonMenu;
+		private ToolStripSeparator toolStripMenuItem1;
+		private ToolStripSeparator toolStripMenuItem2;
 	}
 }

@@ -18,7 +18,7 @@ namespace rp2040Zero_Keybord
 				if (_keyConfigs != null)
 				{
 					m_layer = _keyConfigs.NumMode;
-					for (int i = 0; i < 4; i++)
+					for (int i = 0; i < m_LayerCount; i++)
 					{
 						rb[i].Checked = (i == m_layer);
 					}
@@ -27,14 +27,41 @@ namespace rp2040Zero_Keybord
 		}
 
 		private int m_layer = 0;
+		private int m_LayerCount = 3;
 		RadioButton [] rb = new RadioButton[4];
-
-		public LayerSW()
+		[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+		public int LayerCount
 		{
-			this.Text = "Layer";
-			this.Size = new Size(300, 40);
+			get { return m_LayerCount; }
+			set
+			{
+				if (value < 1) value = 1;
+				if (m_layer != value)
+				{
+					m_LayerCount = value;
+					CreateRB(m_LayerCount);
+				}
+			}
+		}
 
-			for (int i = 0; i < 4; i++)
+		public void CreateRB(int v)
+		{
+			// 既存のRadioButtonを削除
+			if (rb.Length>0)
+			{
+				for (int i = rb.Length-1; i >=0 ; i--)
+				{
+					if (rb[i] != null)
+					{
+						this.Controls.Remove(rb[i]);
+						rb[i].Dispose();
+					}
+				}
+			}
+			// 新しいRadioButtonを作成
+			rb = new RadioButton[v];
+			// ここで新しいRadioButtonを作成して配置
+			for (int i = 0; i < rb.Length; i++)
 			{
 				rb[i] = new RadioButton();
 				if (i == m_layer)
@@ -45,7 +72,6 @@ namespace rp2040Zero_Keybord
 				rb[i].Location = new Point(60 + i * 40, 12);
 				rb[i].Size = new Size(35, 20);
 				rb[i].Tag = i;
-
 				rb[i].Click += (s, e) =>
 				{
 					RadioButton? r = (RadioButton?)s;
@@ -61,9 +87,18 @@ namespace rp2040Zero_Keybord
 						}
 					}
 				};
-
 				this.Controls.Add(rb[i]);
 			}
+		}
+
+		public LayerSW()
+		{
+			this.Name = "LayerSW";
+			this.Text = "LayerSW";
+			this.Size = new Size(300, 40);
+			this.BackColor = SystemColors.Control;
+			this.ForeColor = SystemColors.ControlText;
+			CreateRB(m_LayerCount);
 		}
 	}
 }

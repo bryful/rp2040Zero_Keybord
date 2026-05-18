@@ -207,7 +207,7 @@ namespace rp2040Zero_Keybord
 			}
 
 		}
-		public void ClearKeyConfigs()
+		public void Clear()
 		{
 			foreach (var row in buttons)
 			{

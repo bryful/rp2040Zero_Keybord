@@ -42,8 +42,8 @@ namespace rp2040Zero_Keybord
 	}
 	public class KeyConfigs
 	{
-		private KeyConfig[][][] keyMaps = new KeyConfig[LayerCount][][]; // 4 layers, 4 rows, 5 columns
-		private KeyConfig[][][] EncoderMaps = new KeyConfig[LayerCount][][]; // 4 layers, 2 count, 3 value
+		private KeyConfig[][][] keyMaps = new KeyConfig[_LayerCount][][]; // 3 layers, 4 rows, 5 columns
+		private KeyConfig[][][] EncoderMaps = new KeyConfig[_LayerCount][][]; // 3 layers, 2 count, 3 value
 
 		private KeyIcons? _icons = null;
 
@@ -94,8 +94,7 @@ namespace rp2040Zero_Keybord
 				}
 			}
 		}
-		public const int num_mode_max = 4;
-		private const int LayerCount = 4;
+		private const int _LayerCount = 3;
 
 		private int m_num_mode = 0;
 
@@ -115,7 +114,7 @@ namespace rp2040Zero_Keybord
 		{
 			int newValue = num_mode;
 			if (newValue < 0) newValue = 0;
-			if (newValue >= num_mode_max) newValue = num_mode_max - 1;
+			if (newValue >= _LayerCount) newValue = _LayerCount - 1;
 
 			if (m_num_mode != newValue)
 			{
@@ -160,7 +159,7 @@ namespace rp2040Zero_Keybord
 
 		public void SetKeyConfigs(int index, KeyConfig[] config)
 		{
-			if (index >= 0 && index < LayerCount)
+			if (index >= 0 && index < _LayerCount)
 			{
 				for (int row = 0; row < 4; row++)
 				{
@@ -184,7 +183,7 @@ namespace rp2040Zero_Keybord
 		}
 		public KeyConfig[] GetKeyConfigs(int index)
 		{
-			if (index >= 0 && index < LayerCount)
+			if (index >= 0 && index < _LayerCount)
 			{
 				List<KeyConfig> configs = new List<KeyConfig>();
 				for (int row = 0; row < 4; row++)
@@ -218,7 +217,7 @@ namespace rp2040Zero_Keybord
 		}
 		public void SetEncoderConfigs(int index,int encoderIndex, KeyConfig[] config)
 		{
-			if (index >= 0 && index < LayerCount)
+			if (index >= 0 && index < _LayerCount)
 			{
 				if (encoderIndex<0) encoderIndex = 0;
 				else if (encoderIndex>=2) encoderIndex = 1;
@@ -237,7 +236,7 @@ namespace rp2040Zero_Keybord
 		public KeyConfig[] GetEncoderConfigs(int index, int encoderIndex)
 		{
 
-			if (index >= 0 && index < LayerCount)
+			if (index >= 0 && index < _LayerCount)
 			{
 				if (encoderIndex < 0) encoderIndex = 0;
 				else if (encoderIndex >= 2) encoderIndex = 1;
@@ -271,7 +270,7 @@ namespace rp2040Zero_Keybord
 		}
 		public void Initialize()
 		{
-			for (int layer = 0; layer < LayerCount; layer++)
+			for (int layer = 0; layer < _LayerCount; layer++)
 			{
 				keyMaps[layer] = new KeyConfig[4][];
 				for (int row = 0; row < 4; row++)
@@ -297,7 +296,7 @@ namespace rp2040Zero_Keybord
 		{
 			if (m_num_mode == index) return;
 
-			if (index >= 0 && index < LayerCount)
+			if (index >= 0 && index < _LayerCount)
 			{
 				var sourceKeyConfigs = GetKeyConfigs(index);
 				SetKeyConfigs(m_num_mode, sourceKeyConfigs);
@@ -595,25 +594,15 @@ namespace rp2040Zero_Keybord
 			sb.AppendLine();
 
 			// 定数定義
-			sb.AppendLine("#define NUM_MODES " + LayerCount);
+			sb.AppendLine("#define NUM_MODES " + _LayerCount);
 			sb.AppendLine("#define ENCODER_COUNT 2");
 			sb.AppendLine();
 
 			// keyMaps配列の生成
 			sb.AppendLine("KeyConfig keyMaps[NUM_MODES][4][5] = {");
 
-			for (int layer = 0; layer < LayerCount; layer++)
+			for (int layer = 0; layer < _LayerCount; layer++)
 			{
-				string layerComment = layer switch
-				{
-					0 => "固定キー (Default)",
-					1 => "PhotoShop",
-					2 => "AfterEffects",
-					3 => "Custom",
-					_ => $"Layer {layer}"
-				};
-
-				sb.AppendLine($"    // --- {layer}. {layerComment} ---");
 				sb.AppendLine("    {");
 
 				for (int row = 0; row < 4; row++)
@@ -635,7 +624,7 @@ namespace rp2040Zero_Keybord
 						sb.AppendLine("}");
 				}
 
-				if (layer < LayerCount - 1)
+				if (layer < _LayerCount - 1)
 					sb.AppendLine(",");
 			}
 
@@ -645,18 +634,8 @@ namespace rp2040Zero_Keybord
 			// encoderMaps配列の生成
 			sb.AppendLine("KeyConfig encoderMaps[NUM_MODES][ENCODER_COUNT][3] = {");
 
-			for (int layer = 0; layer < LayerCount; layer++)
+			for (int layer = 0; layer < _LayerCount; layer++)
 			{
-				string layerComment = layer switch
-				{
-					0 => "固定キー (Default)",
-					1 => "PhotoShop",
-					2 => "AfterEffects",
-					3 => "Custom",
-					_ => $"Layer {layer}"
-				};
-
-				sb.AppendLine($"    // --- {layer}. {layerComment} ---");
 				sb.AppendLine("    {");
 
 				for (int encoder = 0; encoder < 2; encoder++)
@@ -682,7 +661,7 @@ namespace rp2040Zero_Keybord
 
 				sb.Append("    }");
 
-				if (layer < LayerCount - 1)
+				if (layer < _LayerCount - 1)
 					sb.AppendLine(",");
 				else
 					sb.AppendLine();
@@ -700,111 +679,6 @@ namespace rp2040Zero_Keybord
 			try
 			{
 				Push(); // 現在の設定を保存
-				/*
-				var sb = new StringBuilder();
-
-				// ヘッダーコメント
-				sb.AppendLine("// Auto-generated key configuration");
-				sb.AppendLine("// Generated at: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-				sb.AppendLine();
-
-				// 定数定義
-				sb.AppendLine("#define NUM_MODES " + LayerCount);
-				sb.AppendLine("#define ENCODER_COUNT 2");
-				sb.AppendLine();
-
-				// keyMaps配列の生成
-				sb.AppendLine("KeyConfig keyMaps[NUM_MODES][4][5] = {");
-
-				for (int layer = 0; layer < LayerCount; layer++)
-				{
-					string layerComment = layer switch
-					{
-						0 => "固定キー (Default)",
-						1 => "PhotoShop",
-						2 => "AfterEffects",
-						3 => "Custom",
-						_ => $"Layer {layer}"
-					};
-
-					sb.AppendLine($"    // --- {layer}. {layerComment} ---");
-					sb.AppendLine("    {");
-
-					for (int row = 0; row < 4; row++)
-					{
-						sb.Append("        {");
-						for (int col = 0; col < 5; col++)
-						{
-							var config = keyMaps[layer][row][col];
-							sb.Append($"{{{FormatModifier(config.modifier)}, {FormatKeycode(config.keycode)}, {FormatMouse(config.mouse)}}}");
-
-							if (col < 4)
-								sb.Append(", ");
-						}
-						sb.Append("}");
-
-						if (row < 3)
-							sb.AppendLine(",");
-						else
-							sb.AppendLine("}");
-					}
-
-					if (layer < LayerCount - 1)
-						sb.AppendLine(",");
-				}
-
-				sb.AppendLine("};");
-				sb.AppendLine();
-
-				// encoderMaps配列の生成
-				sb.AppendLine("KeyConfig encoderMaps[NUM_MODES][ENCODER_COUNT][3] = {");
-
-				for (int layer = 0; layer < LayerCount; layer++)
-				{
-					string layerComment = layer switch
-					{
-						0 => "固定キー (Default)",
-						1 => "PhotoShop",
-						2 => "AfterEffects",
-						3 => "Custom",
-						_ => $"Layer {layer}"
-					};
-
-					sb.AppendLine($"    // --- {layer}. {layerComment} ---");
-					sb.AppendLine("    {");
-
-					for (int encoder = 0; encoder < 2; encoder++)
-					{
-						sb.AppendLine($"        // Enc{encoder}");
-						sb.Append("        {");
-
-						for (int value = 0; value < 3; value++) // CW, CCW, SW
-						{
-							var config = EncoderMaps[layer][encoder][value];
-							sb.Append($"{{{FormatModifier(config.modifier)}, {FormatKeycode(config.keycode)}, {FormatMouse(config.mouse)}}}");
-
-							if (value < 2)
-								sb.Append(", ");
-						}
-						sb.Append("}");
-
-						if (encoder < 1)
-							sb.AppendLine(",");
-						else
-							sb.AppendLine();
-					}
-
-					sb.Append("    }");
-
-					if (layer < LayerCount - 1)
-						sb.AppendLine(",");
-					else
-						sb.AppendLine();
-				}
-
-				sb.AppendLine("};");
-				*/
-
 				File.WriteAllText(filePath, ToCpp(), Encoding.UTF8);
 			}
 			catch (Exception ex)

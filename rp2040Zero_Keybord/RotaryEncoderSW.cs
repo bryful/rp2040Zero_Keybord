@@ -31,7 +31,7 @@ namespace rp2040Zero_Keybord
 		}
 		public RotaryEncoderSW()
 		{
-			this.Size = new Size(430, 190);
+			this.Size = new Size(430, 194);
 			this.BackColor = SystemColors.Control;
 
 			Label lbCW = new Label();
@@ -40,7 +40,7 @@ namespace rp2040Zero_Keybord
 			lbCW.Size = new Size(100, 20);
 			this.Controls.Add(lbCW);
 			keyConfigSW_CW.Location = new Point(0, 20);
-			keyConfigSW_CW.Size = new Size(210, 72);
+			keyConfigSW_CW.Size = new Size(210, 74);
 			this.Controls.Add(keyConfigSW_CW);
 
 
@@ -50,7 +50,7 @@ namespace rp2040Zero_Keybord
 			lbCCW.Size = new Size(100, 20);
 			this.Controls.Add(lbCCW);
 			keyConfigSW_CCW.Location = new Point(220, 20);
-			keyConfigSW_CCW.Size = new Size(210, 72);
+			keyConfigSW_CCW.Size = new Size(210, 74);
 			this.Controls.Add(keyConfigSW_CCW);
 
 			Label lbSW = new Label();
@@ -60,7 +60,7 @@ namespace rp2040Zero_Keybord
 			this.Controls.Add(lbSW);		
 			
 			keyConfigSW_SW.Location = new Point(0, 114);
-			keyConfigSW_SW.Size = new Size(210, 72);
+			keyConfigSW_SW.Size = new Size(210, 74);
 			this.Controls.Add(keyConfigSW_SW);
 		}
 	}

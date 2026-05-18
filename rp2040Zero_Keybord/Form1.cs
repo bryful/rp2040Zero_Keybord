@@ -27,21 +27,41 @@ namespace rp2040Zero_Keybord
 			_configs.RotaryEncoder1 = rotaryEncoder1;
 			_configs.RotaryEncoder2 = rotaryEncoder2;
 
-			copyFromindex0ToolStripMenuItem.Tag = 0;
-			copyFromindex1ToolStripMenuItem.Tag = 1;
-			copyFromindex2ToolStripMenuItem.Tag = 2;
-			copyFromindex3ToolStripMenuItem.Tag = 3;
+			copyFromindex0Menu.Tag = 0;
+			copyFromindex1Menu.Tag = 1;
+			copyFromindex2Menu.Tag = 2;
 		}
 		private void RegisterEventHandlers()
 		{
 			btnSet.Click += BtnSet_Click;
-			copyFromindex0ToolStripMenuItem.Click += CopyFromindex0ToolStripMenuItem_Click;
-			copyFromindex1ToolStripMenuItem.Click += CopyFromindex0ToolStripMenuItem_Click;
-			copyFromindex2ToolStripMenuItem.Click += CopyFromindex0ToolStripMenuItem_Click;
-			copyFromindex3ToolStripMenuItem.Click += CopyFromindex0ToolStripMenuItem_Click;
+			btnClear.Click += btnClear_Click;
+			copyFromindex0Menu.Click += CopyFromindex0Menu_Click;
+			copyFromindex1Menu.Click += CopyFromindex0Menu_Click;
+			copyFromindex2Menu.Click += CopyFromindex0Menu_Click;
+			quitMenu.Click += (s, e) =>
+			{
+				Application.Exit();
+			};
+			openMenu.Click += (s, e) =>
+			{
+				_configs.LoadSettings();
+			};
+			saveMenu.Click += (s, e) => {
+				_configs.SaveSettings();
+			};
+			ToClipBoardJsonMenu.Click += (s, e) =>
+			{
+				string json = _configs.ToJson();
+				Clipboard.SetText(json);
+			};
+			ToClipboardCPPMenu.Click += (s, e) =>
+			{
+				string cpp = _configs.ToCpp();
+				Clipboard.SetText(cpp);
+			};
 		}
 
-		private void CopyFromindex0ToolStripMenuItem_Click(object? sender, EventArgs e)
+		private void CopyFromindex0Menu_Click(object? sender, EventArgs e)
 		{
 			if (sender is ToolStripMenuItem menuItem && menuItem.Tag is int index)
 			{
@@ -54,6 +74,11 @@ namespace rp2040Zero_Keybord
 			keyIcons1.Apply();
 			_configs.Push();
 		}
+		private void btnClear_Click(object? sender, EventArgs e)
+		{
+			keyIcons1.Clear();
+			_configs.Push();
+		}
 		protected override void OnFormClosing(FormClosingEventArgs e)
 		{
 			base.OnFormClosing(e);
@@ -61,16 +86,14 @@ namespace rp2040Zero_Keybord
 
 		}
 
-		private void toClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+		private void toClipboardCPPMenuClick(object sender, EventArgs e)
 		{
 			string s = _configs.ToCpp();
 			Clipboard.SetText(s);
 
 		}
 
-		private void btnClear_Click(object sender, EventArgs e)
-		{
-			_configs.Clear();
-		}
+		
+			
 	}
 }
