@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			menuStrip1 = new MenuStrip();
 			fileToolStripMenuItem = new ToolStripMenuItem();
 			openMenu = new ToolStripMenuItem();
@@ -239,6 +240,7 @@
 			Controls.Add(groupBox1);
 			Controls.Add(groupBox2);
 			FormBorderStyle = FormBorderStyle.FixedToolWindow;
+			Icon = (Icon)resources.GetObject("$this.Icon");
 			MainMenuStrip = menuStrip1;
 			Name = "Form1";
 			menuStrip1.ResumeLayout(false);
