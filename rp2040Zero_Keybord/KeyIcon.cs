@@ -60,7 +60,11 @@ namespace rp2040Zero_Keybord
 			this.BackColor = SystemColors.Control;
 			this.DoubleBuffered = true;
 		}
-
+		public void Clear()
+		{
+			m_keyConfig = new KeyConfig();
+			this.Invalidate(); // 再描画
+		}
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			base.OnPaint(e);
@@ -71,7 +75,7 @@ namespace rp2040Zero_Keybord
 				g.FillRectangle(brush, this.ClientRectangle);
 				g.DrawRectangle(pen, 0, 0, this.ClientRectangle.Width - 1, this.ClientRectangle.Height - 1);
 			}
-			using (Font font = new Font("Arial", 9))
+			using (Font font = new Font("Arial", 8))
 			{
 				StringFormat format = new StringFormat();
 				format.Alignment = StringAlignment.Center;
@@ -112,6 +116,15 @@ namespace rp2040Zero_Keybord
 					}
 					e.Graphics.DrawString(displayText, font, Brushes.Black, this.ClientRectangle, format);
 				}
+			}
+		}
+		protected override void OnMouseClick(MouseEventArgs e)
+		{
+			base.OnMouseClick(e);
+			Point screenPos = this.PointToScreen(e.Location);
+			if (KeyConFigDialog.ShowEditDialog(ref m_keyConfig, screenPos.X, screenPos.Y))
+			{
+				this.Invalidate(); // 再描画
 			}
 		}
 	}

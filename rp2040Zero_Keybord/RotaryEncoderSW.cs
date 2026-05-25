@@ -6,9 +6,10 @@ namespace rp2040Zero_Keybord
 {
 	public class RotaryEncoderSW :Control
 	{
-		private KeyConfigSW keyConfigSW_CW = new KeyConfigSW();
-		private KeyConfigSW keyConfigSW_CCW = new KeyConfigSW();
-		private KeyConfigSW keyConfigSW_SW = new KeyConfigSW();
+
+		private KeyIcon keyIcon_CW = new KeyIcon();
+		private KeyIcon keyIcon_CCW = new KeyIcon();
+		private KeyIcon keyIcon_SW = new KeyIcon();
 
 
 		[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
@@ -17,51 +18,57 @@ namespace rp2040Zero_Keybord
 		{
 			get
 			{
-				return new KeyConfig[] { keyConfigSW_CW.KeyConfig, keyConfigSW_CCW.KeyConfig, keyConfigSW_SW.KeyConfig };
+				return new KeyConfig[] { keyIcon_CW.KeyConfig, keyIcon_CCW.KeyConfig, keyIcon_SW.KeyConfig };
 			}
 			set
 			{
 				if (value != null && value.Length >= 3)
 				{
-					keyConfigSW_CW.KeyConfig = value[0];
-					keyConfigSW_CCW.KeyConfig = value[1];
-					keyConfigSW_SW.KeyConfig = value[2];
+					keyIcon_CW.KeyConfig = value[0];
+					keyIcon_CCW.KeyConfig = value[1];
+					keyIcon_SW.KeyConfig = value[2];
 				}
 			}
 		}
+		public void Clear()
+		{
+			keyIcon_CW.Clear();
+			keyIcon_CCW.Clear();
+			keyIcon_SW.Clear();
+		}
 		public RotaryEncoderSW()
 		{
-			this.Size = new Size(430, 194);
+			this.Size = new Size(64*3+20, 84);
 			this.BackColor = SystemColors.Control;
 
 			Label lbCW = new Label();
 			lbCW.Text = "CW";
 			lbCW.Location = new Point(0, 0);
-			lbCW.Size = new Size(100, 20);
+			lbCW.Size = new Size(64, 20);
 			this.Controls.Add(lbCW);
-			keyConfigSW_CW.Location = new Point(0, 20);
-			keyConfigSW_CW.Size = new Size(210, 74);
-			this.Controls.Add(keyConfigSW_CW);
+			keyIcon_CW.Location = new Point(0, 20);
+			keyIcon_CW.Size = new Size(64, 64);
+			this.Controls.Add(keyIcon_CW);
 
 
 			Label lbCCW = new Label();
 			lbCCW.Text = "CCW";
-			lbCCW.Location = new Point(220, 0);
-			lbCCW.Size = new Size(100, 20);
+			lbCCW.Location = new Point(74, 0);
+			lbCCW.Size = new Size(64, 20);
 			this.Controls.Add(lbCCW);
-			keyConfigSW_CCW.Location = new Point(220, 20);
-			keyConfigSW_CCW.Size = new Size(210, 74);
-			this.Controls.Add(keyConfigSW_CCW);
+			keyIcon_CCW.Location = new Point(74, 20);
+			keyIcon_CCW.Size = new Size(64, 64);
+			this.Controls.Add(keyIcon_CCW);
 
 			Label lbSW = new Label();
 			lbSW.Text = "SW";
-			lbSW.Location = new Point(0, 94);
-			lbSW.Size = new Size(100, 20);
+			lbSW.Location = new Point(74+60+10, 0);
+			lbSW.Size = new Size(64, 20);
 			this.Controls.Add(lbSW);		
 			
-			keyConfigSW_SW.Location = new Point(0, 114);
-			keyConfigSW_SW.Size = new Size(210, 74);
-			this.Controls.Add(keyConfigSW_SW);
+			keyIcon_SW.Location = new Point(74+60+10, 20);
+			keyIcon_SW.Size = new Size(64, 64);
+			this.Controls.Add(keyIcon_SW);
 		}
 	}
 }

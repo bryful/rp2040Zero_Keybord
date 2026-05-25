@@ -37,19 +37,6 @@ namespace rp2040Zero_Keybord
 
 		public KeyConfigSW()
 		{
-			// ランタイム時のみKeyConfigを初期化
-			
-			/*if (!DesignMode)
-			{
-				try
-				{
-					m_KeyConfig = new KeyConfig();
-				}
-				catch
-				{
-					// デザイン時のエラーを無視
-				}
-			}*/
 			this.Size = new Size(204, 78);
 			string[] modifierNames = new string[] { "Ctrl", "Shift", "Alt", "GUI" };
 			int[] modifierSize = new int[] { 48, 50, 45, 45 };

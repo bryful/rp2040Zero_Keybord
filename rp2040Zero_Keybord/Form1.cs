@@ -1,4 +1,4 @@
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace rp2040Zero_Keybord
 {
@@ -15,7 +15,7 @@ namespace rp2040Zero_Keybord
 		}
 		private void InitializeKeyboardComponents()
 		{
-			if (layerNav1 == null || keyIcons1 == null || keyConfigsw1 == null ||
+			if (layerNav1 == null || keyIcons1 == null || 
 				rotaryEncoder1 == null || rotaryEncoder2 == null)
 			{
 				throw new InvalidOperationException("Required controls are not initialized.");
@@ -24,24 +24,16 @@ namespace rp2040Zero_Keybord
 
 
 			layerNav1.KeyConfigs = _configs;
-			keyIcons1.KeyConfigSW = keyConfigsw1;
 
 			_configs.Icons = keyIcons1;
 			_configs.RotaryEncoder1 = rotaryEncoder1;
 			_configs.RotaryEncoder2 = rotaryEncoder2;
 			_configs.LayerNav = layerNav1;
-			copyFromindex0Menu.Tag = 0;
-			copyFromindex1Menu.Tag = 1;
-			copyFromindex2Menu.Tag = 2;
 		}
 		private void RegisterEventHandlers()
 		{
-			btnSet.Click += BtnSet_Click;
 			btnClear.Click += btnClear_Click;
 
-			copyFromindex0Menu.Click += CopyFromindex0Menu_Click;
-			copyFromindex1Menu.Click += CopyFromindex0Menu_Click;
-			copyFromindex2Menu.Click += CopyFromindex0Menu_Click;
 			quitMenu.Click += (s, e) =>
 			{
 				Application.Exit();
@@ -63,6 +55,10 @@ namespace rp2040Zero_Keybord
 			{
 				GetlayerInfo();
 			};
+			clearMenu.Click += (s, e) =>
+			{
+				Clear();
+			};
 		}
 
 		private void CopyFromindex0Menu_Click(object? sender, EventArgs e)
@@ -78,10 +74,16 @@ namespace rp2040Zero_Keybord
 			keyIcons1.Apply();
 			_configs.Push();
 		}
-		private void btnClear_Click(object? sender, EventArgs e)
+		public void Clear()
 		{
 			keyIcons1.Clear();
+			rotaryEncoder1.Clear();
+			rotaryEncoder2.Clear();
 			_configs.Push();
+		}
+		private void btnClear_Click(object? sender, EventArgs e)
+		{
+			Clear();
 		}
 		protected override void OnFormClosing(FormClosingEventArgs e)
 		{
