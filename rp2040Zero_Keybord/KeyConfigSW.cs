@@ -31,7 +31,7 @@ namespace rp2040Zero_Keybord
 					modifierCheckBoxes[i].Checked = (m_KeyConfig.modifier & (1 << i)) != 0;
 				}
 				keyDropDownList.SelectedKeyCode = m_KeyConfig.keycode;
-				mouseDropDownList.SelectedMouse = m_KeyConfig.mouse;
+				mouseDropDownList.SelectedMouse = (byte)m_KeyConfig.mouse;
 			}
 		}
 
@@ -96,7 +96,7 @@ namespace rp2040Zero_Keybord
 			if (modifierCheckBoxes[2].Checked) m_KeyConfig.modifier |= 0x04; // Alt
 			if (modifierCheckBoxes[3].Checked) m_KeyConfig.modifier |= 0x08; // GUI
 			m_KeyConfig.keycode = keyDropDownList.SelectedKey.Code;
-			m_KeyConfig.mouse = mouseDropDownList.SelectedMouse;
+			m_KeyConfig.mouse = (ClickType)mouseDropDownList.SelectedMouse;
 		}
 		protected override void OnPaint(PaintEventArgs e)
 		{

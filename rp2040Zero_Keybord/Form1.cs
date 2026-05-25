@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace rp2040Zero_Keybord
 {
 	public partial class Form1 : Form
@@ -13,7 +15,7 @@ namespace rp2040Zero_Keybord
 		}
 		private void InitializeKeyboardComponents()
 		{
-			if (layersw1 == null || keyIcons1 == null || keyConfigsw1 == null ||
+			if (layerNav1 == null || keyIcons1 == null || keyConfigsw1 == null ||
 				rotaryEncoder1 == null || rotaryEncoder2 == null)
 			{
 				throw new InvalidOperationException("Required controls are not initialized.");
@@ -21,12 +23,13 @@ namespace rp2040Zero_Keybord
 			_configs.LoadFromBinaryFile("keyconfigs.dat");
 
 
-			layersw1.KeyConfigs = _configs;
+			layerNav1.KeyConfigs = _configs;
 			keyIcons1.KeyConfigSW = keyConfigsw1;
+
 			_configs.Icons = keyIcons1;
 			_configs.RotaryEncoder1 = rotaryEncoder1;
 			_configs.RotaryEncoder2 = rotaryEncoder2;
-
+			_configs.LayerNav = layerNav1;
 			copyFromindex0Menu.Tag = 0;
 			copyFromindex1Menu.Tag = 1;
 			copyFromindex2Menu.Tag = 2;
@@ -35,6 +38,7 @@ namespace rp2040Zero_Keybord
 		{
 			btnSet.Click += BtnSet_Click;
 			btnClear.Click += btnClear_Click;
+
 			copyFromindex0Menu.Click += CopyFromindex0Menu_Click;
 			copyFromindex1Menu.Click += CopyFromindex0Menu_Click;
 			copyFromindex2Menu.Click += CopyFromindex0Menu_Click;
@@ -46,18 +50,18 @@ namespace rp2040Zero_Keybord
 			{
 				_configs.LoadSettings();
 			};
-			saveMenu.Click += (s, e) => {
-				_configs.SaveSettings();
-			};
-			ToClipBoardJsonMenu.Click += (s, e) =>
+			saveMenu.Click += (s, e) =>
 			{
-				string json = _configs.ToJson();
-				Clipboard.SetText(json);
+				_configs.SaveSettings();
 			};
 			ToClipboardCPPMenu.Click += (s, e) =>
 			{
 				string cpp = _configs.ToCpp();
 				Clipboard.SetText(cpp);
+			};
+			getDeviceMenu.Click += (s, e) =>
+			{
+				GetlayerInfo();
 			};
 		}
 
@@ -93,7 +97,24 @@ namespace rp2040Zero_Keybord
 
 		}
 
-		
-			
+		private void rotaryEncoder2_Click(object sender, EventArgs e)
+		{
+
+		}
+		public string ConnectToDevice()
+		{
+			using (SerialConnect serialConnect = new SerialConnect())
+			{
+				return serialConnect.ShowDialogAndGetSelectedPort();
+			}
+		}
+		public void GetlayerInfo()
+		{
+			string portName = ConnectToDevice();
+			if (!string.IsNullOrEmpty(portName))
+			{
+				_configs.ReceiveConfigFromDevice(portName);
+			}
+		}
 	}
 }

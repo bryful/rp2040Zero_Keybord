@@ -184,7 +184,7 @@ namespace rp2040Zero_Keybord
 						int col = m_iconIndex % 5;
 						if (row < buttons.Count && col < buttons[row].Count)
 						{
-							buttons[row][col].KeyConfig = value;
+							buttons[row][col].KeyConfig = (KeyConfig)value;
 						}
 					}
 				}

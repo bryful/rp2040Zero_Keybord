@@ -31,18 +31,18 @@ namespace rp2040Zero_Keybord
 		}
 		[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
 		[System.ComponentModel.Browsable(true)]
-		public Byte Mouse
+		public byte Mouse
 		{
-			get { return m_keyConfig.mouse; }
+			get { return (byte)m_keyConfig.mouse; }
 			set
 			{
-				m_keyConfig.mouse = value;
+				m_keyConfig.mouse = (ClickType)value;
 				this.Invalidate(); // 再描画
 			}
 		}
 		[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
 		[System.ComponentModel.Browsable(true)]
-		public Byte KeyCode {
+		public byte KeyCode {
 			get
 			{
 				return m_keyConfig.keycode;
@@ -103,9 +103,9 @@ namespace rp2040Zero_Keybord
 					if (m_keyConfig.mouse != 0)
 					{
 						string ss = "";
-						if ((m_keyConfig.mouse & 0x01) != 0) ss = "Mouse Left";
-						else if ((m_keyConfig.mouse & 0x02) != 0) ss = "Mouse Right";
-						else if ((m_keyConfig.mouse & 0x04) != 0) ss = "Mouse Middle";
+						if (((byte)m_keyConfig.mouse & 0x01) != 0) ss = "Mouse Left";
+						else if (((byte)m_keyConfig.mouse & 0x02) != 0) ss = "Mouse Right";
+						else if (((byte)m_keyConfig.mouse & 0x04) != 0) ss = "Mouse Middle";
 						if (ss != "")
 						displayText = displayText+ "\r\n" + ss;
 

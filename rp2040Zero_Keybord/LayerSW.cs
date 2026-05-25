@@ -17,7 +17,7 @@ namespace rp2040Zero_Keybord
 				_keyConfigs = value;
 				if (_keyConfigs != null)
 				{
-					m_layer = _keyConfigs.NumMode;
+					m_layer = _keyConfigs.SelectedIndex;
 					for (int i = 0; i < m_LayerCount; i++)
 					{
 						rb[i].Checked = (i == m_layer);
@@ -82,7 +82,7 @@ namespace rp2040Zero_Keybord
 							m_layer = (int)r.Tag;
 							if (KeyConfigs != null)
 							{
-								KeyConfigs.NumMode = m_layer;
+								KeyConfigs.SelectedIndex = m_layer;
 							}
 						}
 					}
