@@ -20,6 +20,10 @@ namespace rp2040Zero_Keybord
 				bool modeChange = cbModeChange.Checked;
 				SetModeChange(modeChange);
 			};
+			btnClear.Click += (s, e) =>
+			{
+				Clear();
+			};
 		}
 		[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
 		public string Caption
@@ -43,8 +47,8 @@ namespace rp2040Zero_Keybord
 			cbModeChange.Checked = modeChange;
 
 			gbK.Enabled = !modeChange;
-			gbK.Enabled = !modeChange;
-			gbMode.Enabled = !modeChange;
+			gbM.Enabled = !modeChange;
+			gbMouse.Enabled = !modeChange;
 		}
 		[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
 		public KeyConfig KeyConfig

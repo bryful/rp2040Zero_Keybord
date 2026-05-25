@@ -159,7 +159,7 @@
 			// 
 			// btnClear
 			// 
-			btnClear.Location = new Point(601, 273);
+			btnClear.Location = new Point(601, 285);
 			btnClear.Name = "btnClear";
 			btnClear.Size = new Size(66, 62);
 			btnClear.TabIndex = 3;
@@ -181,7 +181,7 @@
 			rotaryEncoder1.BackColor = SystemColors.Control;
 			rotaryEncoder1.Location = new Point(14, 19);
 			rotaryEncoder1.Name = "rotaryEncoder1";
-			rotaryEncoder1.Size = new Size(214, 90);
+			rotaryEncoder1.Size = new Size(214, 96);
 			rotaryEncoder1.TabIndex = 0;
 			// 
 			// groupBox2
@@ -199,7 +199,7 @@
 			rotaryEncoder2.BackColor = SystemColors.Control;
 			rotaryEncoder2.Location = new Point(14, 17);
 			rotaryEncoder2.Name = "rotaryEncoder2";
-			rotaryEncoder2.Size = new Size(214, 89);
+			rotaryEncoder2.Size = new Size(214, 87);
 			rotaryEncoder2.TabIndex = 0;
 			rotaryEncoder2.Click += rotaryEncoder2_Click;
 			// 

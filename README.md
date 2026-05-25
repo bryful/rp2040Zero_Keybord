@@ -1,5 +1,7 @@
 ﻿# RP2040 Zero Keyboard Configurator
 
+![img01.png](.\img\img01.png)
+
 RP2040 Zeroベースのカスタムキーボード用のキー割り当て設定ツール
 [https://github.com/bryful/rp2040Zero_keyboard_RotaryEncoder](https://github.com/bryful/rp2040Zero_keyboard_RotaryEncoder)
 
@@ -47,7 +49,7 @@ Releasesページから最新版をダウンロードしてください。
    - `rp2040Zero_Keybord.exe`を実行
 
 2. **レイヤーの選択**
-   - 上部のラジオボタンで0〜3のレイヤーを選択
+   - 上部のラジオボタンで0?3のレイヤーを選択
 
 3. **キーの設定**
    - キーボードマトリクスから設定したいキーをクリック
@@ -77,7 +79,7 @@ RP2040ファームウェアに直接コピー＆ペースト可能：
 
 - **HIDキーコード**: USB HID準拠（TinyUSB互換）
 - **日本語キーボード**: JIS配列の特殊キー（無変換、変換、かな等）に対応
-- **ファンクションキー**: F1〜F24
+- **ファンクションキー**: F1?F24
 - **メディアキー**: Mute、Volume Up/Down
 - **マウスボタン**: Left/Right/Middle/Back/Forward
 

@@ -75,7 +75,7 @@ namespace rp2040Zero_Keybord
 				g.FillRectangle(brush, this.ClientRectangle);
 				g.DrawRectangle(pen, 0, 0, this.ClientRectangle.Width - 1, this.ClientRectangle.Height - 1);
 			}
-			using (Font font = new Font("Arial", 8))
+			using (Font font = new Font("Arial", 7))
 			{
 				StringFormat format = new StringFormat();
 				format.Alignment = StringAlignment.Center;
