@@ -32,6 +32,8 @@
 			label1 = new Label();
 			btnOK = new Button();
 			btnCancel = new Button();
+			cbDtrEnable = new CheckBox();
+			cbRtsEnable = new CheckBox();
 			SuspendLayout();
 			// 
 			// comboBoxPorts
@@ -55,7 +57,7 @@
 			// btnOK
 			// 
 			btnOK.DialogResult = DialogResult.OK;
-			btnOK.Location = new Point(124, 65);
+			btnOK.Location = new Point(124, 120);
 			btnOK.Name = "btnOK";
 			btnOK.Size = new Size(75, 23);
 			btnOK.TabIndex = 2;
@@ -65,12 +67,32 @@
 			// btnCancel
 			// 
 			btnCancel.DialogResult = DialogResult.Cancel;
-			btnCancel.Location = new Point(32, 65);
+			btnCancel.Location = new Point(32, 120);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(75, 23);
 			btnCancel.TabIndex = 3;
 			btnCancel.Text = "Cancel";
 			btnCancel.UseVisualStyleBackColor = true;
+			// 
+			// cbDtrEnable
+			// 
+			cbDtrEnable.AutoSize = true;
+			cbDtrEnable.Location = new Point(78, 65);
+			cbDtrEnable.Name = "cbDtrEnable";
+			cbDtrEnable.Size = new Size(77, 19);
+			cbDtrEnable.TabIndex = 4;
+			cbDtrEnable.Text = "DtrEnable";
+			cbDtrEnable.UseVisualStyleBackColor = true;
+			// 
+			// cbRtsEnable
+			// 
+			cbRtsEnable.AutoSize = true;
+			cbRtsEnable.Location = new Point(78, 90);
+			cbRtsEnable.Name = "cbRtsEnable";
+			cbRtsEnable.Size = new Size(77, 19);
+			cbRtsEnable.TabIndex = 5;
+			cbRtsEnable.Text = "RtsEnable";
+			cbRtsEnable.UseVisualStyleBackColor = true;
 			// 
 			// SerialConnect
 			// 
@@ -78,7 +100,9 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
-			ClientSize = new Size(237, 116);
+			ClientSize = new Size(284, 176);
+			Controls.Add(cbRtsEnable);
+			Controls.Add(cbDtrEnable);
 			Controls.Add(btnCancel);
 			Controls.Add(btnOK);
 			Controls.Add(label1);
@@ -97,5 +121,7 @@
 		private Label label1;
 		private Button btnOK;
 		private Button btnCancel;
+		private CheckBox cbDtrEnable;
+		private CheckBox cbRtsEnable;
 	}
 }

@@ -9,6 +9,22 @@ using System.IO.Ports;
 
 namespace rp2040Zero_Keybord
 {
+	public struct SerialPortInfo
+	{
+		public bool IsValid => !string.IsNullOrEmpty(PortName);
+		public string PortName { get; set; } = "";
+		public bool DtrEnable { get; set; } = true;
+		public bool RtsEnable { get; set; } = false;
+		public SerialPortInfo(string portName, bool dtrEnable = true, bool rtsEnable = false)
+		{
+			PortName = portName;
+			DtrEnable = dtrEnable;
+			RtsEnable = rtsEnable;
+		}
+		public SerialPortInfo() { }
+	}
+
+
 	public partial class SerialConnect : Form
 	{
 		public SerialConnect()
@@ -19,8 +35,10 @@ namespace rp2040Zero_Keybord
 			{
 				comboBoxPorts.Items.Add(port);
 			});
+			cbDtrEnable.Checked = true;
+			cbRtsEnable.Checked = false;
 		}
-		public string ShowDialogAndGetSelectedPort()
+		public SerialPortInfo ShowDialogAndGetSelectedPort()
 		{
 			if (comboBoxPorts.Items.Count > 0)
 			{
@@ -29,14 +47,24 @@ namespace rp2040Zero_Keybord
 			else
 			{
 				MessageBox.Show("No serial ports found. Please connect your device and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return "";
+				return new SerialPortInfo();
 			}
+			SerialPortInfo info = new SerialPortInfo();
 			if (this.ShowDialog() == DialogResult.OK)
 			{
-
-				return comboBoxPorts.SelectedItem.ToString();
+				string? nm = (string?)comboBoxPorts.SelectedItem.ToString(); 
+				if (string.IsNullOrEmpty(nm))
+				{
+					info.PortName = "";
+				}
+				else
+				{
+					info.PortName = (string)nm;
+					info.DtrEnable = cbDtrEnable.Checked;
+					info.RtsEnable = cbRtsEnable.Checked;
+				}
 			}
-			return "";
+			return info;
 		}
 	}
 }

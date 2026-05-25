@@ -101,10 +101,34 @@ namespace rp2040Zero_Keybord
 
 				for (int i = 0; i < _LayerCount; i++)
 				{
-					names.Add(layers[i].layerName);
+					names.Add(NameChk(layers[i].layerName));
 				}
 				return names.ToArray();
 			}
+		}
+		public string NameChk(string src)
+		{
+			var str = "";
+			src = src.Trim();
+			if (src.Length > 0)
+			{
+				for (int i = 0; i < src.Length; i++)
+				{
+					char c = src[i];
+					if (c >= 'a' && c <= 'z'
+						|| c >= 'A' && c <= 'Z'
+						|| c >= '0' && c <= '9'
+						|| c == '-' || c == '_' || c == '+' || c == '#' || c == '$' || c == '[' || c == ']' || c == ' ')
+					{
+						str += c;
+						if (str.Length >= 16)
+						{
+							break;
+						}
+					}
+				}
+			}
+			return str;
 		}
 		public string LayerName
 		{
@@ -114,35 +138,14 @@ namespace rp2040Zero_Keybord
 				{
 					return "";
 				}
-				return layers[m_SelectedIndex].layerName;
+				return NameChk( layers[m_SelectedIndex].layerName);
 			}
 			set
 			{
 
 				if (IsSelected)
 				{
-					value = value.Trim();
-					if (value == null || value == "") value = "Layer " + (m_SelectedIndex + 1);
-					var str = "";
-					if (value.Length > 0)
-					{
-						for (int i = 0; i < value.Length; i++)
-						{
-							char c = value[i];
-							if ( c>='a' && c<='z' 
-								|| c>='A' && c<='Z' 
-								|| c>='0' && c<='9' 
-								|| c=='-' || c == '_'|| c=='+' || c == '#' || c == '$' || c == '[' || c == ']')
-							{
-								str += c;
-								if (str.Length >=16)
-								{
-									break;
-								} 
-							}
-						}
-					}
-					layers[m_SelectedIndex].layerName = str;
+					layers[m_SelectedIndex].layerName = NameChk(value);
 				}
 			}
 		}
@@ -509,8 +512,13 @@ namespace rp2040Zero_Keybord
 		// ================================================================================
 		// 【新規追加】USB接続されたマイコン（RP2040）へ設定を一撃送信 (SAVE)
 		// ================================================================================
-		public bool SendConfigToDevice(string portName)
+		public bool SendConfigToDevice(SerialPortInfo info)
 		{
+			if (!info.IsValid)
+			{
+				MessageBox.Show("有効なシリアルポートが見つかりませんでした。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
 			try
 			{
 				Push(); // 画面上の最新データを layers 配列に完全同期
@@ -534,9 +542,10 @@ namespace rp2040Zero_Keybord
 				}
 
 				// シリアル通信ポートを開いてコマンド処理を実行
-				using (SerialPort serial = new SerialPort(portName, 115200))
+				using (SerialPort serial = new SerialPort(info.PortName, 115200))
 				{
-					serial.DtrEnable = true; // DTRを有効にしてマイコンのリセットを促す
+					serial.DtrEnable = info.DtrEnable; // DTRを有効にしてマイコンのリセットを促す
+					serial.RtsEnable = info.RtsEnable;
 					serial.ReadTimeout = 2000;
 					serial.WriteTimeout = 2000;
 					serial.Open();
@@ -566,16 +575,22 @@ namespace rp2040Zero_Keybord
 		// ================================================================================
 		// 【新規追加】USB接続されたマイコン（RP2040）から現在の設定を逆吸い出し (LOAD)
 		// ================================================================================
-		public bool ReceiveConfigFromDevice(string portName)
+		public bool ReceiveConfigFromDevice(SerialPortInfo info)
 		{
+			if (!info.IsValid)
+			{
+				MessageBox.Show("有効なシリアルポートが見つかりませんでした。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
 			try
 			{
 				int layerSize = Marshal.SizeOf(typeof(LayerInfo)); // 97
 				int totalBinarySize = layerSize * _LayerMaxCount; // 776
 
-				using (SerialPort serial = new SerialPort(portName, 115200))
+				using (SerialPort serial = new SerialPort(info.PortName, 115200))
 				{
-					serial.DtrEnable = true; // DTRを有効にしてマイコンのリセットを促す
+					serial.DtrEnable = info.DtrEnable; // DTRを有効にしてマイコンのリセットを促す
+					serial.RtsEnable = info.RtsEnable;
 					serial.ReadTimeout = 3000;
 					serial.Open();
 

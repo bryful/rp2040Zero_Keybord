@@ -101,7 +101,7 @@ namespace rp2040Zero_Keybord
 		{
 
 		}
-		public string ConnectToDevice()
+		public SerialPortInfo ConnectToDevice()
 		{
 			using (SerialConnect serialConnect = new SerialConnect())
 			{
@@ -110,10 +110,18 @@ namespace rp2040Zero_Keybord
 		}
 		public void GetlayerInfo()
 		{
-			string portName = ConnectToDevice();
-			if (!string.IsNullOrEmpty(portName))
+			SerialPortInfo info = ConnectToDevice();
+			if (info.IsValid)
 			{
-				_configs.ReceiveConfigFromDevice(portName);
+				_configs.ReceiveConfigFromDevice(info);
+			}
+		}
+		public void SendConfigToDevice()
+		{
+			SerialPortInfo info = ConnectToDevice();
+			if (info.IsValid)
+			{
+				_configs.SendConfigToDevice(info);
 			}
 		}
 	}
