@@ -1,6 +1,6 @@
 ﻿# RP2040 Zero Keyboard Configurator
 
-![img01.png](.\img\img01.png)
+![img01.png](./img/img01.png)
 
 RP2040 Zeroベースのカスタムキーボード用のキー割り当て設定ツール
 [https://github.com/bryful/rp2040Zero_keyboard_RotaryEncoder](https://github.com/bryful/rp2040Zero_keyboard_RotaryEncoder)
